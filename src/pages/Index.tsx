@@ -17,26 +17,49 @@ const Index = () => {
     }
   };
 
+  const handleFeatureClick = (featureType: string) => {
+    switch (featureType) {
+      case 'search':
+        navigate('/search');
+        break;
+      case 'tracking':
+        navigate('/dashboard');
+        break;
+      case 'security':
+        navigate('/register');
+        break;
+      case 'guidance':
+        navigate('/dashboard');
+        break;
+      default:
+        break;
+    }
+  };
+
   const features = [
     {
       icon: Search,
       title: "Smart Search",
-      description: "Find mutual funds quickly with our advanced search functionality"
+      description: "Find mutual funds quickly with our advanced search functionality",
+      type: "search"
     },
     {
       icon: TrendingUp,
       title: "Performance Tracking",
-      description: "Track and analyze fund performance with detailed insights"
+      description: "Track and analyze fund performance with detailed insights",
+      type: "tracking"
     },
     {
       icon: Shield,
       title: "Secure Platform",
-      description: "Your investments and data are protected with enterprise-grade security"
+      description: "Your investments and data are protected with enterprise-grade security",
+      type: "security"
     },
     {
       icon: Users,
       title: "Expert Guidance",
-      description: "Get access to expert recommendations and market insights"
+      description: "Get access to expert recommendations and market insights",
+      type: "guidance"
     }
   ];
 
@@ -117,12 +140,16 @@ const Index = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow duration-300">
+              <Card 
+                key={index} 
+                className="text-center hover:shadow-lg transition-shadow duration-300 cursor-pointer hover:scale-105 transform transition-transform"
+                onClick={() => handleFeatureClick(feature.type)}
+              >
                 <CardHeader>
                   <div className="mx-auto w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
                     <feature.icon className="h-6 w-6 text-blue-600" />
                   </div>
-                  <CardTitle className="text-xl font-semibold text-gray-900">
+                  <CardTitle className="text-xl font-semibold text-gray-900 hover:text-blue-600 transition-colors">
                     {feature.title}
                   </CardTitle>
                 </CardHeader>
