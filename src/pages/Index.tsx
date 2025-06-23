@@ -26,7 +26,8 @@ const Index = () => {
         navigate('/dashboard');
         break;
       case 'security':
-        navigate('/register');
+        // Navigate to a security/privacy page or show security info
+        navigate('/dashboard'); // For now, redirect to dashboard
         break;
       case 'guidance':
         navigate('/dashboard');
